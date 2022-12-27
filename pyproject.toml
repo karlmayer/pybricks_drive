@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "PyBricks Remote Drive"
+version = "0.1.0"
+description = "Remote control a PyBricks vehicle from your laptop."
+authors = ["Karl Mayer"]
+readme = "README.md"
+packages = [{include = "pybricks_drive"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+pybricksdev = "^1.0.0a33"
+pybricks = "^3.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pybricksdev = "^1.0.0a33"
+pybricks = "^3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

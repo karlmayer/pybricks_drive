@@ -1,13 +1,12 @@
 from uselect import poll
 from usys import stdin
-
 from pybricks.hubs import PrimeHub
-from pybricks.pupdevices import DCMotor
+from pybricks.pupdevices import Motor
 from pybricks.parameters import Port, Direction
 
 hub = PrimeHub()
-leftDrive = DCMotor(Port.B, Direction.COUNTERCLOCKWISE)
-rightDrive = DCMotor(Port.A, Direction.CLOCKWISE)
+leftDrive = Motor(Port.B, Direction.COUNTERCLOCKWISE)
+rightDrive = Motor(Port.A, Direction.CLOCKWISE)
 input_buffer = ""
 loop_poll = poll()
 loop_poll.register(stdin)

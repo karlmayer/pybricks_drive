@@ -10,6 +10,9 @@
     
     poetry run python main.py
 
+## Notes
+The first version of this program redirected stdin for keyboard input. To simplify the code, I switched to _pynput_, which, for security reasons, required adding VS Code to MacOS Input Monitoring. Keyboard input is not working from my MacOS terminal, so I may ditch pynput at a later time.
+
 ## Resources
 * pybricksdev: https://github.com/pybricks/pybricksdev
 * PyBricks/PC communication: https://pybricks.com/projects/tutorials/wireless/hub-to-device/pc-communication/

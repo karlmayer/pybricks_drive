@@ -79,6 +79,22 @@ pyopenssl = ["pyOpenSSL (>=17.0.0)"]
 pywin32 = ["pywin32 (>=227)"]
 
 [[package]]
+name = "autopep8"
+version = "2.0.1"
+description = "A tool that automatically formats Python code to conform to the PEP 8 style guide"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "autopep8-2.0.1-py2.py3-none-any.whl", hash = "sha256:be5bc98c33515b67475420b7b1feafc8d32c1a69862498eda4983b45bffd2687"},
+    {file = "autopep8-2.0.1.tar.gz", hash = "sha256:d27a8929d8dcd21c0f4b3859d2d07c6c25273727b98afc984c039df0f0d86566"},
+]
+
+[package.dependencies]
+pycodestyle = ">=2.10.0"
+tomli = {version = "*", markers = "python_version < \"3.11\""}
+
+[[package]]
 name = "bleak"
 version = "0.19.5"
 description = "Bluetooth Low Energy platform Agnostic Klient"
@@ -309,6 +325,17 @@ files = [
 ]
 
 [[package]]
+name = "evdev"
+version = "1.6.0"
+description = "Bindings to the Linux input handling subsystem"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "evdev-1.6.0.tar.gz", hash = "sha256:ecfa01b5c84f7e8c6ced3367ac95288f43cd84efbfd7dd7d0cdbfc0d18c87a6a"},
+]
+
+[[package]]
 name = "mpy-cross-v5"
 version = "1.0.0"
 description = "Python wrapper for the mpy-cross tool from MicroPython."
@@ -418,6 +445,18 @@ typing-extensions = ">=4.3.0,<5.0.0"
 validators = ">=0.18.2,<0.19.0"
 
 [[package]]
+name = "pycodestyle"
+version = "2.10.0"
+description = "Python style guide checker"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pycodestyle-2.10.0-py2.py3-none-any.whl", hash = "sha256:8a4eaf0d0495c7395bdab3589ac2db602797d76207242c17d470186815706610"},
+    {file = "pycodestyle-2.10.0.tar.gz", hash = "sha256:347187bdb476329d98f695c213d7295a846d1152ff4fe9bacb8a9590b8ee7053"},
+]
+
+[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"
@@ -428,6 +467,25 @@ files = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
     {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
 ]
+
+[[package]]
+name = "pynput"
+version = "1.7.6"
+description = "Monitor and control user input devices"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pynput-1.7.6-py2.py3-none-any.whl", hash = "sha256:19861b2a0c430d646489852f89500e0c9332e295f2c020e7c2775e7046aa2e2f"},
+    {file = "pynput-1.7.6.tar.gz", hash = "sha256:3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c"},
+]
+
+[package.dependencies]
+evdev = {version = ">=1.3", markers = "sys_platform in \"linux\""}
+pyobjc-framework-ApplicationServices = {version = ">=8.0", markers = "sys_platform == \"darwin\""}
+pyobjc-framework-Quartz = {version = ">=8.0", markers = "sys_platform == \"darwin\""}
+python-xlib = {version = ">=0.17", markers = "sys_platform in \"linux\""}
+six = "*"
 
 [[package]]
 name = "pyobjc-core"
@@ -446,6 +504,29 @@ files = [
     {file = "pyobjc_core-8.5.1-cp38-cp38-macosx_11_0_universal2.whl", hash = "sha256:21f92e231a4bae7f2d160d065f5afbf5e859a1e37f29d34ac12592205fc8c108"},
     {file = "pyobjc_core-8.5.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:315334dd09781129af6a39641248891c4caa57043901750b0139c6614ce84ec0"},
 ]
+
+[[package]]
+name = "pyobjc-framework-applicationservices"
+version = "8.5.1"
+description = "Wrappers for the framework ApplicationServices on macOS"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pyobjc-framework-ApplicationServices-8.5.1.tar.gz", hash = "sha256:9cc5118c4c6db4c1ae349ee286b4c45c469f677afc6850d1d8d86af0e103e3df"},
+    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:70727a4e1bc1a19f8e45896e7790883187e4d0ba9e11dee6146372f3c1898a45"},
+    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:13950cc5dfd174eaa3e53f9638942f77707983f77665e05f24c170cd573a726f"},
+    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:80f57cc1a0d30f9fb395b27bc7e7a52b0d89b531a37212bf842cb597f8af9218"},
+    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:efd019ca1d0d1d35edaf41d0655c0fe6d5d01dd8e9c1c1fbea732755fc8fc96d"},
+    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:493096dd73d09fd96e87896176ff90db2f806ba32a5fb46d96d18e0a8ddc816c"},
+    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp38-cp38-macosx_11_0_universal2.whl", hash = "sha256:57e2b21d25f56e36722b36242a0ee59455c758ee52c0d558600685ad27cc62f1"},
+    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:6971b5bca45292c85423d4a5befae7407dfe7b0070e23768f90025599dc61f31"},
+]
+
+[package.dependencies]
+pyobjc-core = ">=8.5.1"
+pyobjc-framework-Cocoa = ">=8.5.1"
+pyobjc-framework-Quartz = ">=8.5.1"
 
 [[package]]
 name = "pyobjc-framework-cocoa"
@@ -508,6 +589,28 @@ files = [
 pyobjc-core = ">=8.5.1"
 
 [[package]]
+name = "pyobjc-framework-quartz"
+version = "8.5.1"
+description = "Wrappers for the Quartz frameworks on macOS"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pyobjc-framework-Quartz-8.5.1.tar.gz", hash = "sha256:37ba625b6c240d4f5aea02f1672b16e53e39de07dbaf33751a61b5a0be7dc9fa"},
+    {file = "pyobjc_framework_Quartz-8.5.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:fe4433be49dafe7efb378bd701583c6ffc93a899e23f1dec743298bc6da5aed6"},
+    {file = "pyobjc_framework_Quartz-8.5.1-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:54f30895cd97a08b67dc3cf2cb032a9ebfe8b80458cddab0b32eb903da8fe447"},
+    {file = "pyobjc_framework_Quartz-8.5.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:5ee24f34d35da7360ca6c790a93a2b61dd6f74a14efef42344555ad0db4e2f8a"},
+    {file = "pyobjc_framework_Quartz-8.5.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:577c912c8d59519a0c5c70b8984406d82f771bca4e399a1f29f224b885012f17"},
+    {file = "pyobjc_framework_Quartz-8.5.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:4599337079050512179229625d97c1494ee4821fcbb82b1a209ed498d7e476af"},
+    {file = "pyobjc_framework_Quartz-8.5.1-cp38-cp38-macosx_11_0_universal2.whl", hash = "sha256:9b7c1030fda93695f8c0bbbe03fce3251a351ca392dd6b03f94805d3afaadd16"},
+    {file = "pyobjc_framework_Quartz-8.5.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:8790fd2499fb1a80d49d8991739e15c5604dba4c8ece87e4afa2f3f679fa0f12"},
+]
+
+[package.dependencies]
+pyobjc-core = ">=8.5.1"
+pyobjc-framework-Cocoa = ">=8.5.1"
+
+[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -536,6 +639,21 @@ files = [
 
 [package.extras]
 cp2110 = ["hidapi"]
+
+[[package]]
+name = "python-xlib"
+version = "0.33"
+description = "Python X Library"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-xlib-0.33.tar.gz", hash = "sha256:55af7906a2c75ce6cb280a584776080602444f75815a7aff4d287bb2d7018b32"},
+    {file = "python_xlib-0.33-py2.py3-none-any.whl", hash = "sha256:c3534038d42e0df2f1392a1b30a15a4ff5fdc2b86cfa94f072bf11b10a164398"},
+]
+
+[package.dependencies]
+six = ">=1.10.0"
 
 [[package]]
 name = "pyusb"
@@ -583,6 +701,18 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 files = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
+]
+
+[[package]]
+name = "tomli"
+version = "2.0.1"
+description = "A lil' TOML parser"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
+    {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
 ]
 
 [[package]]
@@ -652,4 +782,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.11"
-content-hash = "18df294483719c238fa983fa8857442a484710c65a84db2571f2fde5325ad7b4"
+content-hash = "a3f64cf49c7212b4b5abc61a56ab0f3da9a560c07abaca09275762f2b5995a67"

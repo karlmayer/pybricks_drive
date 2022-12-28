@@ -10,10 +10,12 @@ packages = [{include = "pybricks_drive"}]
 python = ">=3.10,<3.11"
 pybricksdev = "^1.0.0a33"
 pybricks = "^3.1.0"
+pynput = "^1.7.6"
 
 [tool.poetry.group.dev.dependencies]
 pybricksdev = "^1.0.0a33"
 pybricks = "^3.1.0"
+autopep8 = "^2.0.1"
 
 [build-system]
 requires = ["poetry-core"]

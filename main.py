@@ -14,6 +14,7 @@ else:
 def getkey():
     if os.name != "nt":
         old_settings = termios.tcgetattr(sys.stdin)
+        # disable echo and fetch user input
         tty.setcbreak(sys.stdin.fileno())
     try:
         while True:
@@ -54,9 +55,12 @@ def getkey():
 
 async def main():
     hub = PybricksHub()
-    device = await find_device(service="c5f50001-8280-46da-89f4-6d8051e4aeef")
+    device = await find_device()
+    # if there are multiple hubs around, you can force a specific hub by setting its BLE address, for example:
+    # device = await find_device(service="c5f50001-8280-46da-89f4-6d8051e4aeef")
     print("Connected to Spike Prime Hub, BLE address: " + device.metadata["uuids"][0])
     await hub.connect(device)
+    # upload to robot.py to hub
     await hub.run("robot.py", wait=False)
     print("PC Ready")
     print("Use arrow keys to drive, Esc to exit")
@@ -64,7 +68,7 @@ async def main():
         try:
             k = getkey()
             if k == "esc":
-                quit()
+                sys.exit()
             if k == "space":
                 await hub.write((k + "\0").encode("UTF-8"))
             if k == "up" or k == "down" or k == "left" or k == "right":
@@ -76,7 +80,7 @@ async def main():
             await hub.write(b"exit\0")
             if os.name != "nt":
                 os.system("stty sane")
-            exit()
+            sys.exit()
 
 
 asyncio.set_event_loop(asyncio.new_event_loop())

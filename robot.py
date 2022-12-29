@@ -27,26 +27,26 @@ def input_handler(msg):
     global lDuty
     global rDuty
     # print(" RX:" + msg)
-    d = 20
-    if msg == "left":
+    d = 30
+    if msg == "L":
         lDuty += -d
         rDuty += d
-    elif msg == "right":
+    elif msg == "R":
         lDuty += d
         rDuty += -d
-    elif msg == "up":
+    elif msg == "U":
         if lDuty != rDuty:
             lDuty = rDuty = max(lDuty, rDuty)
         else:
             lDuty += d
             rDuty += d
-    elif msg == "down":
+    elif msg == "D":
         if lDuty != rDuty:
             lDuty = rDuty = min(lDuty, rDuty)
         else:
             lDuty += -d
             rDuty += -d
-    elif msg == "space":
+    elif msg == " ":
         lDuty = rDuty = 0
     elif msg == "exit":
         raise SystemExit("Closing program.")

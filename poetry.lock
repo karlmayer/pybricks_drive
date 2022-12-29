@@ -325,17 +325,6 @@ files = [
 ]
 
 [[package]]
-name = "evdev"
-version = "1.6.0"
-description = "Bindings to the Linux input handling subsystem"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "evdev-1.6.0.tar.gz", hash = "sha256:ecfa01b5c84f7e8c6ced3367ac95288f43cd84efbfd7dd7d0cdbfc0d18c87a6a"},
-]
-
-[[package]]
 name = "mpy-cross-v5"
 version = "1.0.0"
 description = "Python wrapper for the mpy-cross tool from MicroPython."
@@ -469,25 +458,6 @@ files = [
 ]
 
 [[package]]
-name = "pynput"
-version = "1.7.6"
-description = "Monitor and control user input devices"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "pynput-1.7.6-py2.py3-none-any.whl", hash = "sha256:19861b2a0c430d646489852f89500e0c9332e295f2c020e7c2775e7046aa2e2f"},
-    {file = "pynput-1.7.6.tar.gz", hash = "sha256:3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c"},
-]
-
-[package.dependencies]
-evdev = {version = ">=1.3", markers = "sys_platform in \"linux\""}
-pyobjc-framework-ApplicationServices = {version = ">=8.0", markers = "sys_platform == \"darwin\""}
-pyobjc-framework-Quartz = {version = ">=8.0", markers = "sys_platform == \"darwin\""}
-python-xlib = {version = ">=0.17", markers = "sys_platform in \"linux\""}
-six = "*"
-
-[[package]]
 name = "pyobjc-core"
 version = "8.5.1"
 description = "Python<->ObjC Interoperability Module"
@@ -504,29 +474,6 @@ files = [
     {file = "pyobjc_core-8.5.1-cp38-cp38-macosx_11_0_universal2.whl", hash = "sha256:21f92e231a4bae7f2d160d065f5afbf5e859a1e37f29d34ac12592205fc8c108"},
     {file = "pyobjc_core-8.5.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:315334dd09781129af6a39641248891c4caa57043901750b0139c6614ce84ec0"},
 ]
-
-[[package]]
-name = "pyobjc-framework-applicationservices"
-version = "8.5.1"
-description = "Wrappers for the framework ApplicationServices on macOS"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "pyobjc-framework-ApplicationServices-8.5.1.tar.gz", hash = "sha256:9cc5118c4c6db4c1ae349ee286b4c45c469f677afc6850d1d8d86af0e103e3df"},
-    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:70727a4e1bc1a19f8e45896e7790883187e4d0ba9e11dee6146372f3c1898a45"},
-    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:13950cc5dfd174eaa3e53f9638942f77707983f77665e05f24c170cd573a726f"},
-    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:80f57cc1a0d30f9fb395b27bc7e7a52b0d89b531a37212bf842cb597f8af9218"},
-    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:efd019ca1d0d1d35edaf41d0655c0fe6d5d01dd8e9c1c1fbea732755fc8fc96d"},
-    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:493096dd73d09fd96e87896176ff90db2f806ba32a5fb46d96d18e0a8ddc816c"},
-    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp38-cp38-macosx_11_0_universal2.whl", hash = "sha256:57e2b21d25f56e36722b36242a0ee59455c758ee52c0d558600685ad27cc62f1"},
-    {file = "pyobjc_framework_ApplicationServices-8.5.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:6971b5bca45292c85423d4a5befae7407dfe7b0070e23768f90025599dc61f31"},
-]
-
-[package.dependencies]
-pyobjc-core = ">=8.5.1"
-pyobjc-framework-Cocoa = ">=8.5.1"
-pyobjc-framework-Quartz = ">=8.5.1"
 
 [[package]]
 name = "pyobjc-framework-cocoa"
@@ -589,28 +536,6 @@ files = [
 pyobjc-core = ">=8.5.1"
 
 [[package]]
-name = "pyobjc-framework-quartz"
-version = "8.5.1"
-description = "Wrappers for the Quartz frameworks on macOS"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "pyobjc-framework-Quartz-8.5.1.tar.gz", hash = "sha256:37ba625b6c240d4f5aea02f1672b16e53e39de07dbaf33751a61b5a0be7dc9fa"},
-    {file = "pyobjc_framework_Quartz-8.5.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:fe4433be49dafe7efb378bd701583c6ffc93a899e23f1dec743298bc6da5aed6"},
-    {file = "pyobjc_framework_Quartz-8.5.1-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:54f30895cd97a08b67dc3cf2cb032a9ebfe8b80458cddab0b32eb903da8fe447"},
-    {file = "pyobjc_framework_Quartz-8.5.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:5ee24f34d35da7360ca6c790a93a2b61dd6f74a14efef42344555ad0db4e2f8a"},
-    {file = "pyobjc_framework_Quartz-8.5.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:577c912c8d59519a0c5c70b8984406d82f771bca4e399a1f29f224b885012f17"},
-    {file = "pyobjc_framework_Quartz-8.5.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:4599337079050512179229625d97c1494ee4821fcbb82b1a209ed498d7e476af"},
-    {file = "pyobjc_framework_Quartz-8.5.1-cp38-cp38-macosx_11_0_universal2.whl", hash = "sha256:9b7c1030fda93695f8c0bbbe03fce3251a351ca392dd6b03f94805d3afaadd16"},
-    {file = "pyobjc_framework_Quartz-8.5.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:8790fd2499fb1a80d49d8991739e15c5604dba4c8ece87e4afa2f3f679fa0f12"},
-]
-
-[package.dependencies]
-pyobjc-core = ">=8.5.1"
-pyobjc-framework-Cocoa = ">=8.5.1"
-
-[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -639,21 +564,6 @@ files = [
 
 [package.extras]
 cp2110 = ["hidapi"]
-
-[[package]]
-name = "python-xlib"
-version = "0.33"
-description = "Python X Library"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "python-xlib-0.33.tar.gz", hash = "sha256:55af7906a2c75ce6cb280a584776080602444f75815a7aff4d287bb2d7018b32"},
-    {file = "python_xlib-0.33-py2.py3-none-any.whl", hash = "sha256:c3534038d42e0df2f1392a1b30a15a4ff5fdc2b86cfa94f072bf11b10a164398"},
-]
-
-[package.dependencies]
-six = ">=1.10.0"
 
 [[package]]
 name = "pyusb"
@@ -782,4 +692,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.11"
-content-hash = "a3f64cf49c7212b4b5abc61a56ab0f3da9a560c07abaca09275762f2b5995a67"
+content-hash = "aa5d3857bbe758e766333b8f00d023108404c8dc951a17df2e30f602f010a3d2"

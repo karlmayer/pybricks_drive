@@ -11,7 +11,8 @@
     poetry run python main.py
 
 ## Notes
-The first version of this program redirected stdin for keyboard input. To simplify the code, I switched to _pynput_, which, for security reasons, required adding VS Code to MacOS Input Monitoring. Keyboard input is not working from my MacOS terminal, so I may ditch pynput at a later time.
+For keyboard input, I started with redirected stdin; this was overly complicated. Next, I tried pynput, but it required enabling MacOS Input Monitoring 
+and failed to work on the terminal. I've since moved to curses, which does not have security concerns and will likely be useful for advanced printing to terminal.
 
 ## Resources
 * pybricksdev: https://github.com/pybricks/pybricksdev

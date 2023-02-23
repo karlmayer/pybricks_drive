@@ -10,10 +10,12 @@ rightDrive = Motor(Port.A, Direction.CLOCKWISE)
 input_buffer = ""
 loop_poll = poll()
 loop_poll.register(stdin)
-lDuty = 0
-rDuty = 0
+lDuty = 0 # duty cycle (power) of the left wheel
+rDuty = 0 # duty cycle (power) of the right wheel
 
-
+# Adjust motor duty to overcome breakaway force where
+# static friction is greater than dynamic friction
+# https://en.wikipedia.org/wiki/Duty_cycle
 def correct_duty_limits(speed):
     deadZone = 20
     speed = min(max(speed, -100), 100)
@@ -22,12 +24,11 @@ def correct_duty_limits(speed):
     else:
         return int(speed)
 
-
+# Respond to commands from the PC
 def input_handler(msg):
     global lDuty
     global rDuty
-    # print(" RX:" + msg)
-    d = 30
+    d = 30 # duty cycle delta (the amount it will change up or down)
     if msg == "L":
         lDuty += -d
         rDuty += d
@@ -49,14 +50,14 @@ def input_handler(msg):
     elif msg == " ":
         lDuty = rDuty = 0
     elif msg == "exit":
-        raise SystemExit("Closing program.")
+        raise SystemExit
     lDuty = correct_duty_limits(lDuty)
     rDuty = correct_duty_limits(rDuty)
     print("L: {}, R: {}".format(lDuty, rDuty))
     leftDrive.dc(lDuty)
     rightDrive.dc(rDuty)
 
-
+# Assemble input from the PC into a command
 def update_input(char):
     global input_buffer
     if char == "\0":

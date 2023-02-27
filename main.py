@@ -1,9 +1,13 @@
 from pybricksdev.connections.pybricks import PybricksHub
 from pybricksdev.ble import find_device
+from bleak import BleakScanner, BleakClient
 import asyncio
 import sys
 import curses
 import logging
+
+# Hub name assigned when installing the Pybricks firmware
+HUB_NAME = "Pybricks Hub"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -14,9 +18,21 @@ logging.basicConfig(
 
 log = logging.getLogger(__name__)
 
+# Add the ability to react to input from the robot
+class LineHandlerMixin:
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def line_handler(self, line):
+        log.info("rcv: " + line.decode())
+
+
+class MyPybricksHub(LineHandlerMixin, PybricksHub):
+    pass
+
 
 async def display_main(win):
-    hub = PybricksHub()
+    hub = MyPybricksHub()
     device = await find_device()
     # if there are multiple LEGO hubs around, you can force a specific hub by setting its BLE address, for example:
     # device = await find_device(service="c5f50001-8280-46da-89f4-6d8051e4aeef")
@@ -28,7 +44,7 @@ async def display_main(win):
     win.nodelay(True)
     deviceId = device.metadata["uuids"][0]
     log.info("Bluetooth Device ID: " + deviceId)
-    win.addstr("Connected to Spike Prime Hub, BLE address:" + deviceId + "\n")
+    win.addstr("Connected to Hub; BLE address:" + deviceId + "\n")
     win.addstr("Use arrow keys to drive; space to halt car; ESC to exit\n")
 
     robotCommandDict = {
@@ -43,10 +59,8 @@ async def display_main(win):
         key = win.getch()
         if (key in robotCommandDict):
             commandStr = robotCommandDict[key] + "\0"
-            # send the keyboard command to the hub
+            # send the command to the hub
             await hub.write(commandStr.encode("UTF-8"))
-        # I'd prefer the hub to stop running if the PC disconnects, but it appears we need a heartbeat
-        # method to do this - instead, we'll ask it to stop, then exit
         if key == 27:
             sys.exit()
 

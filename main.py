@@ -19,20 +19,30 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # Add the ability to react to input from the robot
-class LineHandlerMixin:
-    def __init__(self, **kwargs):
+class ResponseHandlerMixin:
+    _responseHandler = None
+
+    def __init__(self, responseHandler, **kwargs):
         super().__init__(**kwargs)
+        self._responseHandler = responseHandler
 
     def line_handler(self, line):
-        log.info("rcv: " + line.decode())
+        input = line.decode()
+        self._responseHandler(input)
 
 
-class MyPybricksHub(LineHandlerMixin, PybricksHub):
+class MyPybricksHub(ResponseHandlerMixin, PybricksHub):
     pass
 
 
 async def display_main(win):
-    hub = MyPybricksHub()
+    def response_handler(response):
+        log.info("Robot says: " + response)
+        win.move(3, 0)
+        win.clrtoeol()
+        win.addstr(3, 0, response + "\n")
+
+    hub = MyPybricksHub(response_handler)
     device = await find_device()
     # if there are multiple LEGO hubs around, you can force a specific hub by setting its BLE address, for example:
     # device = await find_device(service="c5f50001-8280-46da-89f4-6d8051e4aeef")
@@ -43,9 +53,9 @@ async def display_main(win):
     win.clear()
     win.nodelay(True)
     deviceId = device.metadata["uuids"][0]
+    win.addstr(1, 0, "Connected to Hub; BLE address:" + deviceId + "\n")
+    win.addstr(2, 0, "Use arrow keys to drive; space to halt car; ESC to exit\n")
     log.info("Bluetooth Device ID: " + deviceId)
-    win.addstr("Connected to Hub; BLE address:" + deviceId + "\n")
-    win.addstr("Use arrow keys to drive; space to halt car; ESC to exit\n")
 
     robotCommandDict = {
         curses.KEY_LEFT: "L",
@@ -57,6 +67,7 @@ async def display_main(win):
     }
     while True:
         key = win.getch()
+        await asyncio.sleep(.01) # hack to give curses time to handle screen changes
         if (key in robotCommandDict):
             commandStr = robotCommandDict[key] + "\0"
             # send the command to the hub
@@ -69,4 +80,5 @@ def main(win) -> None:
     return asyncio.run(display_main(win))
 
 
-curses.wrapper(main)
+if __name__ == "__main__":
+    curses.wrapper(main)

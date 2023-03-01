@@ -17,7 +17,7 @@ rDuty = 0 # duty cycle (power) of the right wheel
 # static friction is greater than dynamic friction
 # https://en.wikipedia.org/wiki/Duty_cycle
 def correct_duty_limits(speed):
-    deadZone = 20
+    deadZone = 30
     speed = min(max(speed, -100), 100)
     if speed != 0 and abs(speed) < deadZone:
         return int(deadZone * (speed / abs(speed)))
